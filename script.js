@@ -1,7 +1,3 @@
-/* © 2009 ROBO Design
- * http://www.robodesign.ro
- */
-
 // Keep everything in anonymous function, called on window load.
 if(window.addEventListener) {
 window.addEventListener('load', function () {
@@ -29,6 +25,10 @@ window.addEventListener('load', function () {
 
     // Pencil tool instance.
     tool = new tool_pencil();
+
+    //attach an event listener to the prediction button
+    pred_bt=document.getElementById("pred_bt");
+    pred_bt.addEventListener('click',predict,false);
 
     // Attach the mousedown, mousemove and mouseup event listeners.
     canvas.addEventListener('mousedown', ev_canvas, false);
@@ -85,6 +85,15 @@ window.addEventListener('load', function () {
     if (func) {
       func(ev);
     }
+  }
+
+  function predict(){
+    var pred_div=document.getElementById("prediction");
+    //predict number
+    number=Math.round(Math.random()*10);
+    var pred_content = document.createTextNode("maybe "+number+" ??");
+    pred_div.innerHTML="";
+    pred_div.appendChild(pred_content);
   }
 
   init();
