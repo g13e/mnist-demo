@@ -6,6 +6,8 @@
     <style type="text/css">
       #container { position: relative; }
       #imageView { border: 1px solid #000; }
+      #input-canvas-scaled{border: 1px solid #000;}
+      #input-canvas-centercrop{border: 1px solid #000;}
     </style>
   </head>
   <body>
@@ -16,12 +18,15 @@
         </ol>
     </div>  
     <div id="container">
-      <canvas id="imageView" width="400" height="300">
-        <p>Unfortunately, your browser is currently unsupported </p>
-      </canvas>
+      <canvas id="imageView" width="400" height="300"></canvas>
+      <canvas id="input-canvas-scaled" width="28" height="28"></canvas>
+      <canvas id="input-canvas-centercrop" width="267" height="267" ></canvas>
     </div>
     <button id="pred_bt">PREDICT</button>
+    <button id="clear_bt">CLEAR</button>
     <p>PREDICTION: <div id="prediction"></div></p>
+  
+    <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
