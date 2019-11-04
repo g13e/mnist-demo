@@ -124,7 +124,7 @@ window.addEventListener('load', function () {
     console.log(output);
     
     number=output;
-    var pred_content = document.createTextNode("maybe "+number+" ??");
+    var pred_content = document.createTextNode("Is this a "+number+" ?");
     pred_div.innerHTML="";
     pred_div.appendChild(pred_content);
   }

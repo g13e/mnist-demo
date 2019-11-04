@@ -4,28 +4,57 @@
     <meta charset="utf-8">
     <title>Mnist Demo</title>
     <style type="text/css">
-      #container { position: relative; }
+      html{
+        background-color:#ededed;
+        font-family:Segoe UI Semibold,Open Sans,-apple-system,BlinkMacSystemFont,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+        font-size: 18px;
+      }
       #imageView { border: 1px solid #000; }
       #input-canvas-scaled{border: 1px solid #000;}
-      #input-canvas-centercrop{border: 1px solid #000;}
+      #input-canvas-centercrop{border: 1px solid #000; display: none;}
+      #container { padding: 40px 20px; margin-top: 30px; background-color: #fff; position:relative;}
+      .button {
+        color: #fff !important;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: #ed3330;
+        padding: 20px;
+        border-radius: 5px;
+        display: inline-block;
+        border: none;
+        transition: all 0.4s ease 0s;
+      }
+      ol { list-style: none; counter-reset: my-awesome-counter;}
+      ol li {counter-increment: my-awesome-counter;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+      ol li::before {
+        content: counter(my-awesome-counter) ". ";
+        color: red;
+        font-weight: bold;
+      }
+
     </style>
   </head>
   <body>
-    <div id="instructions">
-        <ol>
-            <li>Draw a number form 0 to 9 (Hold down the mouse button to draw)</li>
-            <li>Press "Predict" to have the page try to predict what is the number you have drawn</li>
-        </ol>
-    </div>  
     <div id="container">
+      <div id="instructions">
+        <h1>Instructions</h1>
+        <p>
+          <ol>
+              <li>Draw a digit (0-9) in the box below</li>
+              <li>Press "Predict"</li>
+          </ol>
+        </p>
+      </div>  
       <canvas id="imageView" width="400" height="300"></canvas>
       <canvas id="input-canvas-scaled" width="28" height="28"></canvas>
       <canvas id="input-canvas-centercrop" width="267" height="267" ></canvas>
+      <div id="buttons">
+        <button class="button" id="pred_bt">PREDICT</button>
+        <button class="button" id="clear_bt">CLEAR</button>
+      </div>
+      <h2>PREDICTION: </h2>
+      <p><div id="prediction"></div></p>
     </div>
-    <button id="pred_bt">PREDICT</button>
-    <button id="clear_bt">CLEAR</button>
-    <p>PREDICTION: <div id="prediction"></div></p>
-  
     <script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
   </body>
